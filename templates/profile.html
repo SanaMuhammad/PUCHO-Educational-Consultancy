@@ -1,0 +1,309 @@
+{% extends "chatbot.html" %}
+{%  load static  %}
+<!doctype html>
+<html lang="en">
+{% block content %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Profile</title>
+    <link rel="shortcut icon" href="{% static 'images/logo2.png' %}" type="image/png">
+	  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	  <!--css3---->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="body-overlay"></div>
+      <nav id="sidebar">
+          <div class="sidebar-header">
+            <h3><img src="{% static 'images/logo2.png' %}" class="img-fluid"/><span>Pucho</span></h3>
+          </div>
+          <ul class="list-unstyled components">
+            <li>
+              <a href="{% url 'home' %}" class="dashboard"><i class="material-icons">home</i><span>Home</span></a>
+            </li>
+            <li>
+              <a href="{% url 'recommendation' %}" class="dashboard"><i class="material-icons">bar_chart</i><span>Recommendation</span></a>
+            </li>
+            <li class="active">
+              <a href="{% url 'profile' %}" class="dashboard"><i class="material-icons">person_pin</i><span>Profile</span></a>
+            </li>
+            <li  class="">
+              <a href="{% url 'savedlinks' %}" class="dashboard"><i class="material-icons">link</i><span>Saved Links</span></a>
+            </li>
+            <li  class="">
+              <a href="{% url 'logout' %}?next=/home" class="dashboard"><i class="material-icons">logout</i><span>Logout</span></a>
+            </li>
+          </ul>
+        </nav>
+      <div id="content">
+        <div class="top-navbar">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <div class="d-flex justify-content-start">
+                  <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none more-button2">
+                    <span class="material-icons">arrow_back_ios</span>
+                  </button>
+                  <button class="d-lg-none more-button" type="button" data-toggle="collapse"	data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="material-icons">menu</span>
+                  </button>
+                  <a class="navbar-brand"> Dashboard </a>
+                </div>
+              </div>
+            </nav>
+	        </div>
+        <div class="main-content">
+            <div class="bg-div">
+              <img src="{% static 'images/bg4.jpg' %}" class="bg-success-gradient image-fluid" alt="">
+            </div>
+            <div class="row content flex-box">
+              <div class="col-lg-8 col-md-8 col-sm-12 flex-box-0">
+                <div class="profile-form shadow mx-2">
+                  <div class="row mx-3">
+                    <div class="col-lg-12 m-auto">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h4>Profile</h4>
+                        </div>
+                        <div>
+                          <a href="/edit"><input type="button" name="" value="Edit" class="btn btn-edit"></a>
+                        </div>
+                      </div>
+                      <form class="multisteps-form__form col-lg-12 col-md-12 col-sm-12">
+                        <div class="multisteps-form__content">
+                          <div class="form-row mt-4 justify-content-around">
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Full Name</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.full_name}}" disabled/>
+
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Email</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.email}}" disabled/>
+
+                            </div>
+                          </div>
+                          <div class="form-row mt-4 justify-content-around">
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Phone No.</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.phone_number}}" disabled/>
+
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">City</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.city}}" disabled/>
+
+                            </div>
+                          </div>
+                          <div class="form-row mt-4 justify-content-around">
+                            <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                              <label for="">Address</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.address}}" disabled/>
+
+                            </div>
+                          </div>
+                          <div class="form-row mt-4 justify-content-around">
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Gender</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.gender}}" disabled/>
+
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Age</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.age}}" disabled/>
+
+                            </div>
+                          </div>
+                          <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Religion</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.religion}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Nationality</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.nationality}}" disabled/>
+
+                              </div>
+                            </div>
+                          <div class="form-row mt-4 justify-content-around">
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Guardian's Name</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.gaurdian_name}}" disabled/>
+
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                              <label for="">Guardian's Income</label>
+                              <input class="multisteps-form__input form-control" type="text" value="{{query.gaurdian_income}}" disabled/>
+
+                            </div>
+                          </div>
+                          <div class="multisteps-form__content">
+                            <div class="row  justify-content-around">
+                              <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                <h5 class="pl-2 pt-1">Matriculation Info:</h5>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Name of School</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.name_of_school}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Matric Marks</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.matric_marks}}" disabled/>
+
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Year</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.year_of_matric}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Grade</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.matric_grade}}" disabled/>
+
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                                <label for="">Board Name</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.matric_board}}" disabled/>
+
+                              </div>
+                            </div>
+                            <div class="row  justify-content-around">
+                              <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                <h5 class="pl-2 pt-1">Intermediate Info:</h5>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Name of College</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.name_of_college}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Inter Marks</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.inter_marks}}" disabled/>
+
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Year</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.year_of_inter}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Grade</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.inter_grade}}" disabled/>
+
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                                <label for="">Board Name</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.inter_board}}" disabled/>
+                              </div>
+                            </div>
+                            <div class="row  justify-content-around">
+                              <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                <h5 class="pl-2 pt-1">Your Interest:</h5>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">University Name</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.university_name}}" disabled/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Field of Interest</label>
+                                <input class="multisteps-form__input form-control" type="text" value="{{query.field_of_interest}}" disabled/>
+
+                              <div class="col-lg-11">
+                                <span class="text-white">a</span>
+                                <span class="text-white">a</span>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-11 flex-box-1 profile-detail bg-white shadow">
+                <div class="mx-sm-5">
+                  <img class="profile-img" src="{% static 'images/profile_avatar.png' %}" alt="">
+                </div>
+                <div class="user-details text-center">
+                  <h5><b>{{query.full_name}}</b>, {{query.age}}</h5>
+                  <p><b>Pakistan , {{query.city}}</b></p>
+                  <p>{{query.religion}}</p>
+                  <p class="mt-5 fw-normal"><b>{{query.address}}</b></p>
+                  <p class="mb-5">{{query.name_of_college}}</p>
+                </div>
+              </div>
+            </div>
+            <footer class="footer">
+              <div class="container-fluid">
+               <div class="row">
+                 <div class="col-md-6">
+                   <nav class="d-flex">
+                     <ul class="m-0 p-0">
+                       <li>
+                         <a href="home.html">
+                           Home
+                         </a>
+                       </li>
+                       <li>
+                         <a href="about.html">
+                           About Us
+                         </a>
+                       </li>
+                     </ul>
+                   </nav>
+                 </div>
+                 <div class="col-md-6">
+                   <p class="copyright d-flex justify-content-end"> &copy 2022 Designed For Students</p>
+                 </div>
+               </div>
+             </div>
+            </footer>
+          </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+              $('#sidebarCollapse').on('click', function () {
+                  $('#sidebar').toggleClass('active');
+  				$('#content').toggleClass('active');
+              });
+
+  			 $('.more-button,.body-overlay').on('click', function () {
+                  $('#sidebar,.body-overlay').toggleClass('show-nav');
+              });
+
+          });
+    </script>
+  </body>
+{% endblock %}
+</html>

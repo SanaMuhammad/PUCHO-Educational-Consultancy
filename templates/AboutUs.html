@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{%  load static  %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% block content %}
+  <head>
+    <meta charset="utf-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <main>
+      <section class="section1">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+              <h2 style="font-size: 40px;">About Us</h2>
+              <p class="text-justify">We are the pioneers in the field of providing recommendations to the bulk of students who just drove into the choice of academic career after giving their inter exams with bunch of questions and ambiguities in their minds. This moment requires a keen and deep guidance that reflects students interests and latest scores in order to furnish an advice in concerns of their career paths. Hence we equip them with this opportunity to ace with pace in academic race with bright face.</p>
+
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+              <img src="{% static 'images/about.png' %}" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section  class="section2">
+        <div class="container p-4 descrp_box">
+          <h2 class="line" style="font-size:30px;"> Our Vision </h2>
+          <p class="text-justify">Our vision is to ease the process for most 
+            students who get confused while choosing a field and university suitable for their marks, 
+            interests, budget, location and courses. Another hardship faced by the students is how to 
+            calculate merit and get details of the admission process. Hence, “PUCHO” an educational consultancy, is a proposed solution to this 
+            problem. User will simply insert their information by filling the form and it provides a 
+            quick resolution to queries, helps the students, find the perfect university by easily 
+            matching, their preferences based on marks, budget and location and assist students 
+            through enrolment procedures and campus info.</p>
+          <h2 class="line" style="font-size:30px;">Our Experience</h2>
+          <p class="text-justify">We have assisted a mob of students with our years of experience in providing guidance and recommendation based on their marks, 
+            interests, budget, location and courses. Over 25,000 students pass Higher Secondary Examination every year in Lahore. Most 
+            students get confused while choosing a field and university suitable for their marks, 
+            interests, budget, location and courses. Another hardship faced by the students is how to 
+            calculate merit and get details of the admission process. Hence we ease this process</p>
+        </div>
+      </section>
+    </main>
+  </body>
+{% endblock %}
+</html>

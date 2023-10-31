@@ -1,0 +1,346 @@
+{%  load static  %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>dashboard</title>
+	  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	  <!--css3---->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="body-overlay"></div>
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+          <div class="sidebar-header">
+            <h3><img src="{% static 'images/logo2.png' %}" class="image-fluid"/><span>Pucho</span></h3>
+          </div>
+          <ul class="list-unstyled components">
+            <li>
+              <a href="{% url 'home' %}" class="dashboard"><i class="material-icons">home</i><span>Home</span></a>
+            </li>
+            <li>
+              <a href="{% url 'recommendation' %}" class="dashboard"><i class="material-icons">bar_chart</i><span>Recommendation</span></a>
+            </li>
+            <li class="active">
+              <a href="{% url 'profile' %}" class="dashboard"><i class="material-icons">person_pin</i><span>Profile</span></a>
+            </li>
+            <li  class="">
+              <a href="{% url 'savedlinks' %}" class="dashboard"><i class="material-icons">link</i><span>Saved Links</span></a>
+            </li>
+            <li  class="">
+              <a href="{% url 'logout' %}?next=/home" class="dashboard"><i class="material-icons">logout</i><span>Logout</span></a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+          <div class="top-navbar">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <div class="d-flex justify-content-start">
+                  <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none more-button2">
+                    <span class="material-icons">arrow_back_ios</span>
+                  </button>
+                  <button class="d-lg-none more-button" type="button" data-toggle="collapse"	data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="material-icons">menu</span>
+                  </button>
+                  <a class="navbar-brand"> Dashboard </a>
+                </div>
+              </div>
+            </nav>
+	        </div>
+        	<div class="main-content">
+            <div class="bg-div">
+              <img src="{% static 'images/bg4.jpg' %}" class="bg-success-gradient image-fluid" alt="">
+            </div>
+            <div class="main-content">
+              <div class="row content">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="profile-form shadow mx-2 bookmarks">
+                    <div class="row mx-3">
+                      <div class="col-lg-12 m-auto">
+                        <div class="mt-3">
+                          <h4>Edit Profile</h4>
+                        </div>
+                        <form method="post" enctype="multipart/form-data" action="" class="multisteps-form__form col-lg-12 col-md-12 col-sm-12">
+                          {% csrf_token %}
+                          <div class="multisteps-form__content">
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Full Name</label>
+                                <input class="multisteps-form__input form-control" type="text" name="full_name" required value="{{query.full_name}}">
+                                <span class="focus-input-name"></span>
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Email</label>
+                                <input class="multisteps-form__input form-control" type="text" name="email" value="{{query.email}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Phone No.</label>
+                                <input class="multisteps-form__input form-control" type="text" name="phone_number" value="{{query.phone_number}}" required/>
+
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">City</label>
+                                <input class="multisteps-form__input form-control" type="text" name="city" value="{{query.city}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                                <label for="">Address</label>
+                                <input class="multisteps-form__input form-control" type="text" name="address" value="{{query.address}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Gender</label>
+                                <select class="multisteps-form__select form-control" name="gender" required>
+                                  <option>{{query.gender}}</option>
+                                  <option>M</option>
+                                </select>
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Age</label>
+                                <input class="multisteps-form__input form-control" type="text" name="age" value="{{query.age}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Religion</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="religion" value="{{query.religion}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Nationality</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="nationality" value="{{query.nationality}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Guardian's Name</label>
+                                <input class="multisteps-form__input form-control" type="text" name="gaurdian_name" value="{{query.gaurdian_name}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Guardian's Income</label>
+                                <input class="multisteps-form__input form-control" type="text" name="gaurdian_income" value="{{query.gaurdian_income}}" required/>
+                                <span class="focus-input-name"></span>
+                              </div>
+                            </div>
+                            <div class="multisteps-form__content">
+                              <div class="row  justify-content-around">
+                                <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                  <h5 class="pl-2 pt-1">Matriculation Info:</h5>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Name of School</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="name_of_school" value="{{query.name_of_school}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Matric Marks</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="matric_marks" value="{{query.matric_marks}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Year</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="year_of_matric" value="{{query.year_of_matric}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Grade</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="matric_grade" value="{{query.matric_grade}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                                  <label for="">Board Name</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="matric_board" value="{{query.matric_board}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                              <div class="row  justify-content-around">
+                                <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                  <h5 class="pl-2 pt-1">Intermediate Info:</h5>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Name of College</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="name_of_college" value="{{query.name_of_college}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Inter Marks</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="inter_marks" value="{{query.inter_marks}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Year</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="year_of_inter" value="{{query.year_of_inter}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                  <label for="">Grade</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="inter_grade" value="{{query.inter_grade}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                              <div class="form-row mt-4 justify-content-around">
+                                <div class="col-lg-11 col-md-11 col-sm-12 mt-4 mt-sm-0">
+                                  <label for="">Board Name</label>
+                                  <input class="multisteps-form__input form-control" type="text" name="inter_board" value="{{query.inter_board}}" required/>
+                                  <span class="focus-input-name"></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row  justify-content-around">
+                              <div class="multisteps-form__subtitle text-muted p-2 mt-4 col-lg-11 col-md-11 col-sm-11">
+                                <h5 class="pl-2 pt-1">Your Interest:</h5>
+                              </div>
+                            </div>
+                            <div class="form-row mt-4 justify-content-around">
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">University Name</label>
+                                <select class="multisteps-form__select form-control" name="university_name" required>
+                                  <option>{{query.university_name}}</option>
+                                  <option>University of Engineering and Technology</option>
+                                  <option>Government College University Lahore</option>
+                                  <option>Lahore College for Women University</option>
+                                  <option>Information Technology University</option>
+                                  <option>Kinnard College For Women University</option>
+                                  <option>University of Education</option>
+                                </select>
+                              </div>
+                              <div class="col-lg-5 col-md-5 col-sm-6 mt-4 mt-sm-0">
+                                <label for="">Field of Interest</label>
+                                <select class="multisteps-form__select form-control" name="field_of_interest" required>
+                                  <option>{{query.field_of_interest}}</option>
+                                  <option>SE</option>
+                                  <option>IT</option>
+                                  <option>CE</option>
+                                  <option>CS</option>
+                                  <option>A</option>
+                                  <option>AED</option>
+                                  <option>CRP</option>
+                                  <option>EER</option>
+                                  <option>CE</option>
+                                  <option>IME</option>
+                                  <option>ME</option>
+                                  <option>MCE</option>
+                                  <option>MINE</option>
+                                  <option>MME</option>
+                                  <option>PGE</option>
+                                  <option>PID</option>
+                                  <option>PPE</option>
+                                  <option>TEM</option>
+                                  <option>CHE</option>
+                                </select>
+
+                              <div class="col-lg-11">
+                                <span class="text-white">a</span>
+                                <span class="text-white">a</span>
+                              </div>
+                                <div class="d-flex mt-3">
+                                <input type="submit" name="" value="Submit" class="btn btn-edit ml-auto">
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="footer">
+              <div class="container-fluid">
+               <div class="row">
+                 <div class="col-md-6">
+                   <nav class="d-flex">
+                     <ul class="m-0 p-0">
+                       <li>
+                         <a href="home.html">
+                           Home
+                         </a>
+                       </li>
+                       <li>
+                         <a href="about.html">
+                           About Us
+                         </a>
+                       </li>
+                     </ul>
+                   </nav>
+                 </div>
+                 <div class="col-md-6">
+                   <p class="copyright d-flex justify-content-end"> &copy 2022 Designed For Students</p>
+                 </div>
+               </div>
+             </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery-3.3.1.slim.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery-3.3.1.min.js"></script>
+
+
+  <script type="text/javascript">
+  $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+				$('#content').toggleClass('active');
+            });
+
+			 $('.more-button,.body-overlay').on('click', function () {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
+
+        });
+
+
+
+
+
+</script>
+
+
+
+
+
+  </body>
+
+</html>
